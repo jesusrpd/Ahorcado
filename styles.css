@@ -1,5 +1,44 @@
+:root{
+    --orange: #EF2929; 
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main{
+    width: 100%;
+    height: 100vh;
+    background-image: url('./img/bg.jpg');
+    background-size: cover;
+    text-align: center;
+}
+
+h1{
+    font-size: 4em;
+}
+
+.title{
+    padding-top: 2em;
+}
+
+.btn{
+    padding: .5em;
+    border-radius: .2em;
+    font-weight: bold;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn-orange{
+    background-color: var(--orange);
 }
