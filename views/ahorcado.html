@@ -11,7 +11,7 @@
     <title>Ahorcado | Juego</title>
 </head>
 <body>
-    <main>
+    <section>
         <div class="overlay">
 
             <div class="modal modal-win">
@@ -48,14 +48,16 @@
         </div>
         </div class="container">
             <div>
-                <div>
+                <div class="container-errores">
                     <p>Errores</p>
-                    <span></span>
+                    <div class="container-words">
+                        <div class="input-word-error">d</div>
+                    </div>
                 </div>
             <div  class="container-game">
-                <canvas width="500px" height="500px"></canvas>
+                <canvas id="canvas" width="600px" height="500px"></canvas>
                 <div class="container-words">
-                    <div class="input-word"></div>
+                    <div class="input-word-correct"><p>p</p></div>
                     <div class="input-word"></div>
                     <div class="input-word"></div>
                     <div class="input-word"></div>
@@ -63,6 +65,6 @@
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 </body>
 </html>

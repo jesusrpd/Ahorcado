@@ -31,13 +31,20 @@ main{
     justify-content: space-between;
 }
 
+section{
+    width: 100%;
+    height: 100vh;
+    background-image: url('./img/tower.jpg');
+    background-size: cover;
+}
+
 h1{
     font-size: 4em;
     margin-bottom: .5em;
 }
 
 .title{
-    padding-top: 2em;
+    padding-top: 8em;
     margin-bottom: 3em;
 }
 
@@ -184,6 +191,41 @@ canvas{
     display: inline-block;
 }
 
+.input-word-correct{
+    width: 3em;
+    height: 3em;
+    margin: 0 .3em;
+    display: inline-block;
+    background-color: var(--green);
+    color: var(--light);
+    border-radius: .2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-word-error{
+    width: 3em;
+    height: 3em;
+    margin: 0 .3em;
+    display: inline-block;
+    background-color: var(--red);
+    color: var(--light);
+    border-radius: .2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-word-correct p{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.container-words{
+    display: flex;
+    align-items: flex-end;
+}
+
 .question{
     position: absolute;
     top: 1em;
@@ -195,6 +237,7 @@ canvas{
     font-weight: bold;
     transition: all .3s ease-in-out;
     cursor: pointer;
+    text-align: center;
 }
 
 .question:hover{
@@ -207,6 +250,7 @@ canvas{
 }
 
 .container-game{
+    padding-top: 5em;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
@@ -216,4 +260,22 @@ canvas{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 2em;
+}
+
+.container-errores{
+    font-weight: bold;
+    padding: 5em 10em;
+    text-align: left;
+    height: 10em;
+}
+
+.redes-sociales div img{
+    margin: .5em;
 }
