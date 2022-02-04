@@ -27,10 +27,21 @@ ctx.lineTo(390, 150);
 ctx.stroke();
 ctx.closePath();
 
-//Sujeto ahorcado
+//cabeza del sujeto ahorcado
 ctx.beginPath();
 ctx.moveTo(390, 190);
-ctx.arc(390,150,30, 0, 2*3.14);
+ctx.arc(390,150,35, 0, 2*3.14);
 ctx.fill();
 ctx.closePath();
 
+//cuerpo del sujeto ahorcado
+ctx.beginPath();
+ctx.fillRect(380,150,20,120,);
+ctx.closePath();
+
+//brazo izquierdo del sujeto ahorcado
+ctx.beginPath();
+ctx.moveTo(380,270);
+ctx.lineTo(350,350);
+ctx.stroke();
+ctx.closePath();
