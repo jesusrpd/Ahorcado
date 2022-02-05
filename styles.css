@@ -209,6 +209,7 @@ canvas{
     width: 3em;
     height: 3em;
     margin: 0 .3em;
+    margin-bottom: .2em;
     display: inline-block;
     background-color: var(--red);
     color: var(--light);
@@ -225,6 +226,8 @@ canvas{
 .container-words{
     display: flex;
     align-items: flex-end;
+    width: 30%;
+    flex-wrap: wrap;
 }
 
 .question{

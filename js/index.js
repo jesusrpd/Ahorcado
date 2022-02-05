@@ -1,6 +1,8 @@
 const url = 'http://127.0.0.1:5500/db.json';
 const http = new XMLHttpRequest();
 
+let wordSecret;
+
 http.open("GET", url);
 http.addEventListener("load", () => {
     const res = JSON.parse(http.responseText);
@@ -13,6 +15,7 @@ http.send();
 
 
 const createInput = palabra => {
+    wordSecret = palabra;
     const container = document.querySelector("#input-word");
     for (let i = 0; i < palabra.length; i++) {
         const div = document.createElement("div");
@@ -22,5 +25,22 @@ const createInput = palabra => {
 }
 
 window.addEventListener('keydown', (e) => {
-    console.log(e.key);
+    if (wordSecret.includes(e.key)) {
+        setCorrect(e.key);
+    }else{
+        setErrors(e.key);
+    }
 });
+
+const setCorrect = key => {
+    const container = document.querySelectorAll('.input-word');
+    console.log(container);
+};
+
+const setErrors = key => {
+    const container = document.querySelector("#container-errors");
+    const div = document.createElement("div");
+    div.classList.add('input-word-error');
+    div.innerHTML = key;
+    container.appendChild(div);
+};
