@@ -39,9 +39,32 @@ ctx.beginPath();
 ctx.fillRect(380,150,20,120,);
 ctx.closePath();
 
-//brazo izquierdo del sujeto ahorcado
+//pierna izquierda del sujeto ahorcado
+ctx.lineCap="round";
+ctx.lineWidth=6;
 ctx.beginPath();
-ctx.moveTo(380,270);
+ctx.moveTo(385,260);
 ctx.lineTo(350,350);
+ctx.stroke();
+ctx.closePath();
+
+//pierna derecha del sujeto ahorcado
+ctx.beginPath();
+ctx.moveTo(395,260);
+ctx.lineTo(430,350);
+ctx.stroke();
+ctx.closePath();
+
+//brazo derecho del sujeto ahorcado
+ctx.beginPath();
+ctx.moveTo(395,190);
+ctx.lineTo(440,250);
+ctx.stroke();
+ctx.closePath();
+
+//brazo derecho del sujeto ahorcado
+ctx.beginPath();
+ctx.moveTo(385,190);
+ctx.lineTo(350,250);
 ctx.stroke();
 ctx.closePath();
