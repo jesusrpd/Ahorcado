@@ -1,8 +1,12 @@
+//Peticion inicial del juego
 const url = 'http://127.0.0.1:5500/db.json';
 const http = new XMLHttpRequest();
 
+//Variables iniciales del juego
 let wordSecret;
+let arrayErrors = [];
 
+//se inicializa el juego y la palabra a adivinar dentro del ahorcado
 http.open("GET", url);
 http.addEventListener("load", () => {
     const res = JSON.parse(http.responseText);
@@ -13,7 +17,7 @@ http.addEventListener("load", () => {
 });
 http.send();
 
-
+//Creación de inputs dependiendo de la cantidad de letras de la palabra
 const createInput = palabra => {
     wordSecret = palabra;
     const container = document.querySelector("#input-word");
@@ -24,6 +28,7 @@ const createInput = palabra => {
     }
 }
 
+//Verificación del input
 window.addEventListener('keydown', (e) => {
     if (wordSecret.includes(e.key)) {
         setCorrect(e.key);
@@ -33,14 +38,43 @@ window.addEventListener('keydown', (e) => {
 });
 
 const setCorrect = key => {
-    const container = document.querySelectorAll('.input-word');
-    console.log(container);
+    const divInputs = document.querySelectorAll('.input-word');
+    let idx = wordSecret.indexOf(key);
+    let indices = [];
+    while(idx != -1){
+        indices.push(idx);
+        idx = wordSecret.indexOf(key, idx + 1);
+    }
+    console.log(indices);
+    if (indices.length === 1) {
+        const divCorrect = divInputs[indices[0]];
+        divCorrect.innerHTML = key;
+        divCorrect.classList.add('input-word-correct');
+        divCorrect.classList.remove('input-word');
+    }else{
+        for (let i = 0; i < indices.length; i++) {
+            if (divInputs[indices[i]].classList.contains('input-word-correct')) {
+                continue;
+            }else{
+                divInputs[indices[i]].classList.add('input-word-correct');
+                divInputs[indices[i]].innerHTML = key;
+                break;
+            }
+        }
+    }
 };
 
 const setErrors = key => {
+    if (!arrayErrors.includes(key)) {
+        arrayErrors.push(key);
+        createErrorDiv(key);
+    }
+};
+
+const createErrorDiv = key => {
     const container = document.querySelector("#container-errors");
-    const div = document.createElement("div");
-    div.classList.add('input-word-error');
+    const div = document.createElement('div');
     div.innerHTML = key;
+    div.classList.add('input-word-error');
     container.appendChild(div);
 };
