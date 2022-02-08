@@ -207,7 +207,8 @@ canvas{
 }
 
 .input-word-error{
-    width: 3em;
+    width: fit-content;
+    padding: 0 1.3em;
     height: 3em;
     margin: 0 .3em;
     margin-bottom: .2em;
@@ -224,10 +225,18 @@ canvas{
     font-size: 1.3em;
     font-weight: bold;
 }
+
 .container-words{
     display: flex;
     align-items: flex-end;
     width: 30%;
+    flex-wrap: wrap;
+}
+
+.container-words-errors{
+    display: flex;
+    align-items: flex-end;
+    width: 60%;
     flex-wrap: wrap;
 }
 

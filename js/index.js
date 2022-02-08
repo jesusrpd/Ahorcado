@@ -45,19 +45,15 @@ const setCorrect = key => {
         indices.push(idx);
         idx = wordSecret.indexOf(key, idx + 1);
     }
-    console.log(indices);
     if (indices.length === 1) {
-        const divCorrect = divInputs[indices[0]];
-        divCorrect.innerHTML = key;
-        divCorrect.classList.add('input-word-correct');
-        divCorrect.classList.remove('input-word');
+        showDivCorrect(key, indices[0]);
     }else{
+        console.log(indices);
         for (let i = 0; i < indices.length; i++) {
             if (divInputs[indices[i]].classList.contains('input-word-correct')) {
                 continue;
             }else{
-                divInputs[indices[i]].classList.add('input-word-correct');
-                divInputs[indices[i]].innerHTML = key;
+                showDivCorrect(key, indices[i]);
                 break;
             }
         }
@@ -69,6 +65,13 @@ const setErrors = key => {
         arrayErrors.push(key);
         createErrorDiv(key);
     }
+};
+
+const showDivCorrect = (key, i) => {
+    const divInputs = document.querySelectorAll('.input-word');
+    const divCorrect = divInputs[i];
+    divCorrect.innerHTML = key;
+    divCorrect.classList.add('input-word-correct');
 };
 
 const createErrorDiv = key => {
