@@ -37,6 +37,7 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+//verificación de la respuesta correcta
 const setCorrect = key => {
     const divInputs = document.querySelectorAll('.input-word');
     let idx = wordSecret.indexOf(key);
@@ -48,7 +49,6 @@ const setCorrect = key => {
     if (indices.length === 1) {
         showDivCorrect(key, indices[0]);
     }else{
-        console.log(indices);
         for (let i = 0; i < indices.length; i++) {
             if (divInputs[indices[i]].classList.contains('input-word-correct')) {
                 continue;
@@ -60,13 +60,31 @@ const setCorrect = key => {
     }
 };
 
+//verificar que no se muestren los mismo errores en pantalla
 const setErrors = key => {
     if (!arrayErrors.includes(key)) {
         arrayErrors.push(key);
         createErrorDiv(key);
+        draw(arrayErrors.length);
+        if (arrayErrors.length >= 7) {
+            const overlay = document.querySelector('.overlay');
+            overlay.innerHTML = `
+            <div class="modal modal-game-over">
+                <h2>¡HAZ PERDIDO!</h2>
+                <p>La palabra correcta: palabra</p>
+                <div>
+                    <button class="btn btn-orange">Volver a jugar</button>
+                    <button class="btn btn-blue">Salir</button>
+                </div>
+            </div>
+            `;
+            overlay.classList.remove('overlay-show');
+            
+        }
     }
 };
 
+//mostrar las letras correctas
 const showDivCorrect = (key, i) => {
     const divInputs = document.querySelectorAll('.input-word');
     const divCorrect = divInputs[i];
@@ -74,6 +92,7 @@ const showDivCorrect = (key, i) => {
     divCorrect.classList.add('input-word-correct');
 };
 
+//mostrar los errores en pantalla
 const createErrorDiv = key => {
     const container = document.querySelector("#container-errors");
     const div = document.createElement('div');

@@ -12,35 +12,24 @@
 </head>
 <body>
     <section>
-        <div class="overlay">
+        <div class="overlay overlay-show">
 
-            <div class="modal modal-win">
+            <!-- <div class="modal modal-win">
                 <h2>¡FELICIDADES, HAS GANADO!</h2>
                 <div>
                     <button class="btn btn-orange">Volver a jugar</button>
                     <button class="btn btn-blue">Salir</button>
                 </div>
-            </div>
-
-            <!-- <div class="modal modal-game-over">
-                <h2>¡HAZ PERDIDO!</h2>
-                <p>La palabra correcta: palabra</p>
-                <div>
-                    <button class="btn btn-orange">Volver a jugar</button>
-                    <button class="btn btn-blue">Salir</button>
-                </div>
             </div> -->
-
-            <!-- <div class="modal modal-warning">
-                <h2>Advertencia</h2>
-                <ul>
-                    <li>No se admiten mayusculas</li>
-                    <li>Letras sin acentos o caracteres extraños</li>
-                    <li>No son validos números</li>
-                    <li>Cuenta con 12 intentos</li>
-                </ul>
-                <button class="btn btn-blue">Entendido</button>
-            </div> -->
+        </div>
+        <div class="modal modal-warning">
+            <h2>Advertencia</h2>
+            <ul>
+                <li>No se admiten mayusculas</li>
+                <li>Letras sin acentos o caracteres extraños</li>
+                <li>No son validos números</li>
+                <li>Cuenta con 12 intentos</li>
+            </ul>
         </div>
         <div class="question">
             <span>?</span>
@@ -51,23 +40,17 @@
                 <div class="container-errores">
                     <p>Errores</p>
                     <div id="container-errors" class="container-words-errors">
-                        <!-- <div class="input-word-error">d</div> -->
                     </div>
                 </div>
             <div  class="container-game">
                 <canvas id="canvas" width="600px" height="500px"></canvas>
                 <div id="input-word" class="container-words">
-                    <!-- <div class="input-word-correct"><p>p</p></div>
-                    <div class="input-word"></div>
-                    <div class="input-word"></div>
-                    <div class="input-word"></div>
-                    <div class="input-word"></div> -->
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="..//js/index.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/canvas.js"></script>
 </body>
 </html>
