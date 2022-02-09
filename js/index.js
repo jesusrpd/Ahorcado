@@ -17,6 +17,19 @@ http.addEventListener("load", () => {
 });
 http.send();
 
+//Verificación del input
+window.addEventListener('keydown', (e) => {
+    if (/^([0-9])*$/) {
+        console.log('es un número');
+    }else{
+        if (wordSecret.includes(e.key)) {
+            setCorrect(e.key);
+        }else{
+            setErrors(e.key);
+        }
+    }
+});
+
 //Creación de inputs dependiendo de la cantidad de letras de la palabra
 const createInput = palabra => {
     wordSecret = palabra;
@@ -27,15 +40,6 @@ const createInput = palabra => {
         container.appendChild(div);
     }
 }
-
-//Verificación del input
-window.addEventListener('keydown', (e) => {
-    if (wordSecret.includes(e.key)) {
-        setCorrect(e.key);
-    }else{
-        setErrors(e.key);
-    }
-});
 
 //verificación de la respuesta correcta
 const setCorrect = key => {
@@ -58,7 +62,26 @@ const setCorrect = key => {
             }
         }
     }
+    
+    verifyRequest(divInputs);
 };
+
+//Verificar si la palabra se adivin completamente
+const verifyRequest = inputs => {
+    for(let i=0; i < inputs.length; i++){
+        if (!inputs[i].classList.contains('input-word-correct')) {
+            return false;
+        }
+    }
+
+    return setModal(`<div class="modal modal-win">
+        <h2>¡FELICIDADES, HAS GANADO!</h2>
+        <div>
+            <button id="btn-return" class="btn btn-orange">Volver a jugar</button>
+            <button id="btn-exit" class="btn btn-blue">Salir</button>
+        </div>
+    </div>`);
+}
 
 //verificar que no se muestren los mismo errores en pantalla
 const setErrors = key => {
@@ -67,22 +90,14 @@ const setErrors = key => {
         createErrorDiv(key);
         draw(arrayErrors.length);
         if (arrayErrors.length >= 7) {
-            const overlay = document.querySelector('.overlay');
-            const modalWarning = document.querySelector('.modal-warning');
-            const container = document.querySelector('#section');
-            overlay.innerHTML = `
-            <div class="modal modal-game-over">
+            setModal(`<div class="modal modal-game-over">
                 <h2>¡HAZ PERDIDO!</h2>
                 <p>La palabra correcta: palabra</p>
                 <div>
                     <button id="btn-return" class="btn btn-orange">Volver a jugar</button>
                     <button id="btn-exit" class="btn btn-blue">Salir</button>
                 </div>
-            </div>
-            `;
-            overlay.classList.remove('overlay-show');
-            container.removeChild(modalWarning);
-            modalGameover();
+            </div>`);
         }
     }
 };
@@ -104,8 +119,19 @@ const createErrorDiv = key => {
     container.appendChild(div);
 };
 
+//Mostrar modal
+const setModal = modal => {
+    const overlay = document.querySelector('.overlay');
+    const modalWarning = document.querySelector('.modal-warning');
+    const container = document.querySelector('#section');
+    overlay.innerHTML = `${modal}`;
+    overlay.classList.remove('overlay-show');
+    container.removeChild(modalWarning);
+    btnModal();
+};
+
 //Manejo de los botones del mosal game over
-const modalGameover = () => {
+const btnModal = () => {
     //Botones del menu game over
     const btnSalir = document.querySelector('#btn-exit');
     const btnReturn = document.querySelector('#btn-return');

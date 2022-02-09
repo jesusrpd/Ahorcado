@@ -182,7 +182,7 @@ hr{
     position: absolute;
     top: 40%;
     left: 40%;
-    animation: desaparecer 1s ease-in-out forwards;
+    animation: desaparecer 5s ease-in-out forwards;
 }
 
 @keyframes desaparecer {
@@ -217,6 +217,7 @@ canvas{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: none;
 }
 
 .input-word-error{
