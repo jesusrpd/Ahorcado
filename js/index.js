@@ -68,18 +68,21 @@ const setErrors = key => {
         draw(arrayErrors.length);
         if (arrayErrors.length >= 7) {
             const overlay = document.querySelector('.overlay');
+            const modalWarning = document.querySelector('.modal-warning');
+            const container = document.querySelector('#section');
             overlay.innerHTML = `
             <div class="modal modal-game-over">
                 <h2>¡HAZ PERDIDO!</h2>
                 <p>La palabra correcta: palabra</p>
                 <div>
-                    <button class="btn btn-orange">Volver a jugar</button>
-                    <button class="btn btn-blue">Salir</button>
+                    <button id="btn-return" class="btn btn-orange">Volver a jugar</button>
+                    <button id="btn-exit" class="btn btn-blue">Salir</button>
                 </div>
             </div>
             `;
             overlay.classList.remove('overlay-show');
-            
+            container.removeChild(modalWarning);
+            modalGameover();
         }
     }
 };
@@ -99,4 +102,15 @@ const createErrorDiv = key => {
     div.innerHTML = key;
     div.classList.add('input-word-error');
     container.appendChild(div);
+};
+
+//Manejo de los botones del mosal game over
+const modalGameover = () => {
+    //Botones del menu game over
+    const btnSalir = document.querySelector('#btn-exit');
+    const btnReturn = document.querySelector('#btn-return');
+
+    btnSalir.addEventListener('click', () => window.location.href = '/index.html');
+
+    btnReturn.addEventListener('click', () => window.location.reload());
 };
